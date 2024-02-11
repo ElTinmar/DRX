@@ -2,14 +2,13 @@ from xrayutilities.io.rigaku_ras import RASFile
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-# launch the script inside the parent directory that contains all the .ras 
-# files
-    
+DATADIR = '/home/martin/Documents/Lea_DRX/'
+
 # load custom matplotlib plotting style     
-plt.style.use('plotstyle.mpl')
+plt.style.use('plotstyle.mplstyle')
 
 # loop over all .ras files in the current directory
-for path in Path('.').rglob('*.ras'):
+for path in Path(DATADIR).rglob('*.ras'):
 
     # print progress
     print(path.name)
