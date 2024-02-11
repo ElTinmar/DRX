@@ -13,6 +13,23 @@ RESULTDIR = '/home/martin/Documents/Lea_DRX/Plots'
 # load custom matplotlib plotting style     
 plt.style.use('plotstyle.mplstyle')
 
+# 
+# theta: u'\u03B8'
+# chi: u'\u03C7'  
+# omega: u'\u03A9'
+
+ANGLES = {
+    'Phi': u'\u03C6 (\u00b0)',
+    'Omega': u'\u03C9 (\u00b0)',
+    'TwoThetaOmega': u'2\u03B8\u03C9 (\u00b0)',
+    'TwoThetaTheta': u'2\u03B8 (\u00b0)',
+    'TwoThetaChiPhi': u'2\u03B8\u03C7\u03C6 (\u00b0)',
+    'TwoTheta': u'2\u03B8 (\u00b0)',
+    'X': 'X',
+    'Y': 'Y',
+    'Z': 'Z',
+}
+
 # loop over all .ras files in the current directory
 for path in Path(DATADIR).rglob('*.ras'):
 
@@ -43,7 +60,7 @@ for path in Path(DATADIR).rglob('*.ras'):
     # do the plotting
     f = plt.figure()
     plt.plot(file.scan.data[axis], intensities, color=col)
-    plt.xlabel(axis)
+    plt.xlabel(ANGLES[axis])
     plt.ylabel('Intensity (counts)')
     plt.yscale('log') # use log scale for the Y axis
     plt.title(path.name)
