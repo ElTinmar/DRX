@@ -1,6 +1,7 @@
 from xrayutilities.io.rigaku_ras import RASFile
 import matplotlib.pyplot as plt
 from pathlib import Path
+import re
 
 # TODO Phi have the greek letter (degree)
 
@@ -12,11 +13,6 @@ RESULTDIR = '/home/martin/Documents/Lea_DRX/Plots'
 
 # load custom matplotlib plotting style     
 plt.style.use('plotstyle.mplstyle')
-
-# 
-# theta: u'\u03B8'
-# chi: u'\u03C7'  
-# omega: u'\u03A9'
 
 ANGLES = {
     'Phi': u'\u03C6 (\u00b0)',
@@ -48,11 +44,11 @@ for path in Path(DATADIR).rglob('*.ras'):
     # result file 
     resultfile = Path(RESULTDIR).joinpath(path.with_suffix('.svg').name)
 
-    if path.match('*100*'):
+    if re.search('100', str(path)):
         col = '#B83A00'
-    elif path.match('*110*'):
+    elif re.search('110', str(path)):
         col = '#11801E'
-    elif path.match('*111*'):
+    elif re.search('111', str(path)):
         col = '#0001A4'
     else:
         col = '#000000'
