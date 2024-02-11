@@ -1,0 +1,11 @@
+name: RAS
+channels:
+- conda-forge
+dependencies:
+- python == 3.8.16
+- pip
+- numpy
+- ipython
+- matplotlib
+- pip:
+  - xrayutilities
