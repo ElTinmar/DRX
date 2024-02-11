@@ -32,11 +32,11 @@ for path in Path(DATADIR).rglob('*.ras'):
     resultfile = Path(RESULTDIR).joinpath(path.with_suffix('.svg').name)
 
     if path.match('*100*'):
-        col = '#ff3333'
+        col = '#B83A00'
     elif path.match('*110*'):
-        col = '#33ff33'
+        col = '#11801E'
     elif path.match('*111*'):
-        col = '#3333ff'
+        col = '#0001A4'
     else:
         col = '#000000'
         
@@ -48,3 +48,4 @@ for path in Path(DATADIR).rglob('*.ras'):
     plt.yscale('log') # use log scale for the Y axis
     plt.title(path.name)
     plt.savefig(resultfile)
+    plt.close()
